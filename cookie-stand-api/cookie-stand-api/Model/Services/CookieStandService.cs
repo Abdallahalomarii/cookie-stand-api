@@ -32,7 +32,7 @@ namespace cookie_stand_api.Model.Services
                 Owner = cookieStandDTO.Owner
             };
 
-            var cookieStand = await _context.CookieStands.AddAsync(cookieStandToAdd);
+            await _context.CookieStands.AddAsync(cookieStandToAdd);
 
             cookieStandToAdd.HourlySales = await GenerateHourlySales(cookieStandToAdd.ID, cookieStandToAdd.Minimum_Customers_Per_Hour, cookieStandToAdd.Maximum_Customers_Per_Hour, cookieStandToAdd.Average_Cookies_Per_Sale);
 
