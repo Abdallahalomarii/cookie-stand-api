@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using cookie_stand_api.Data;
 
@@ -11,9 +12,11 @@ using cookie_stand_api.Data;
 namespace cookie_stand_api.Migrations
 {
     [DbContext(typeof(CookieSalmonDbContext))]
-    partial class CookieSalmonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231010034959_NewSetup")]
+    partial class NewSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,7 +305,7 @@ namespace cookie_stand_api.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("CookieStands", (string)null);
+                    b.ToTable("CookieStands");
                 });
 
             modelBuilder.Entity("cookie_stand_api.Model.HourlySales", b =>
@@ -320,7 +323,7 @@ namespace cookie_stand_api.Migrations
 
                     b.HasIndex("CookieStandID");
 
-                    b.ToTable("HourlySales", (string)null);
+                    b.ToTable("HourlySales");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -1,6 +1,7 @@
 ﻿using cookie_stand_api.Model;
 using cookie_stand_api.Model.DTO;
 using cookie_stand_api.Model.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,7 +19,9 @@ namespace cookie_stand_api.Controllers
              _cookie = cookieStand;
         }
         // GET: api/<cookiestand>
+        
         [HttpGet]
+        //[Authorize]
         public async Task<ActionResult<List<CookieStandDTO>>> Get()
         {
             var cookieStands = await _cookie.GetAllCookieStands();
@@ -28,7 +31,6 @@ namespace cookie_stand_api.Controllers
             }
             else
                 return cookieStands;
-
         }
 
         // GET api/<cookiestand>/5
