@@ -38,8 +38,8 @@ namespace cookie_stand_api
                 options.AddPolicy("AllowLocalhost3000",
                     builder => builder.WithOrigins("http://localhost:3000",
                     "http://localhost:3001",
-                    "http://localhost:3001",
-                    "http://localhost:3001") // Replace with your Next.js app's URL
+                    "http://localhost:3002",
+                    "http://localhost:3003") // Replace with your Next.js app's URL
                                      .AllowAnyHeader()
                                      .AllowAnyMethod());
             });
