@@ -2,14 +2,12 @@
 using cookie_stand_api.Model.DTO;
 using cookie_stand_api.Model.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace cookie_stand_api.Controllers
 {
-    [EnableCors("AllowLocalhost3000")]
     [Route("api/[controller]")]
     [ApiController]
     public class CookieStandController : ControllerBase
@@ -23,7 +21,7 @@ namespace cookie_stand_api.Controllers
         // GET: api/<cookiestand>
         
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<List<CookieStandDTO>>> Get()
         {
             var cookieStands = await _cookie.GetAllCookieStands();
@@ -48,6 +46,7 @@ namespace cookie_stand_api.Controllers
 
         // POST api/<cookiestand>
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<CookieStand>> Post([FromBody] CookieStandPostDTO cookieStand)
         {
             var cookieStandPost = await _cookie.AddCookieStand(cookieStand);
